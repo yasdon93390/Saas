@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Palette du cahier des charges : bleu nuit / ardoise pour la structure,
+   bleu franc pour les actions, fonds gris très clair. */
+@theme {
+  --color-ink: #0f172a;
+  --color-ink-soft: #475569;
+  --color-ink-faint: #64748b;
+  --color-line: #e2e8f0;
+  --color-surface: #ffffff;
+  --color-canvas: #f6f8fb;
+  --color-nav: #0f1b33;
+  --color-nav-soft: #9fb0cc;
+  --color-action: #1d4ed8;
+  --color-action-hover: #1e40af;
+  --color-success: #15803d;
+  --color-success-soft: #ecfdf3;
+  --color-warning: #b45309;
+  --color-warning-soft: #fffbeb;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fef2f2;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
