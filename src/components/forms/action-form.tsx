@@ -65,7 +65,9 @@ const CONTROL =
 type FieldProps = {
   name: string;
   label: string;
-  type?: "text" | "email" | "password";
+  type?: "text" | "email" | "password" | "date";
+  inputMode?: "decimal" | "text" | "email";
+  maxLength?: number;
   autoComplete?: string;
   hint?: string;
   required?: boolean;
@@ -104,6 +106,72 @@ export function Field({ name, label, type = "text", hint, required = true, ...re
           {errors.join(" ")}
         </p>
       ) : null}
+    </div>
+  );
+}
+
+export function TextAreaField({
+  name,
+  label,
+  hint,
+  required = false,
+  defaultValue,
+  rows = 3,
+}: {
+  name: string;
+  label: string;
+  hint?: string;
+  required?: boolean;
+  defaultValue?: string;
+  rows?: number;
+}) {
+  const state = use(FormStateContext);
+  const id = useId();
+  const errors = state.fieldErrors?.[name];
+  const describedBy = [hint ? `${id}-hint` : null, errors ? `${id}-error` : null].filter(Boolean).join(" ");
+
+  return (
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-ink">
+        {label}
+      </label>
+      <textarea
+        id={id}
+        name={name}
+        rows={rows}
+        required={required}
+        defaultValue={defaultValue}
+        aria-invalid={errors ? true : undefined}
+        aria-describedby={describedBy || undefined}
+        className={`${CONTROL} h-auto py-2`}
+      />
+      {hint ? (
+        <p id={`${id}-hint`} className="mt-1.5 text-xs text-ink-faint">
+          {hint}
+        </p>
+      ) : null}
+      {errors ? (
+        <p id={`${id}-error`} className="mt-1.5 text-xs font-medium text-danger">
+          {errors.join(" ")}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+export function CheckboxField({ name, label }: { name: string; label: string }) {
+  const state = use(FormStateContext);
+  const id = useId();
+  const errors = state.fieldErrors?.[name];
+  return (
+    <div>
+      <div className="flex items-start gap-2">
+        <input id={id} name={name} type="checkbox" value="true" className="mt-0.5 size-4 rounded border-line" />
+        <label htmlFor={id} className="text-sm text-ink">
+          {label}
+        </label>
+      </div>
+      {errors ? <p className="mt-1.5 text-xs font-medium text-danger">{errors.join(" ")}</p> : null}
     </div>
   );
 }

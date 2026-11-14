@@ -1,0 +1,13 @@
+Numéro;Client;Date facture;Échéance;Montant TTC;Déjà payé;Email
+FA-2026-030;Boulangerie Martin;31/02/2026;04/03/2026;100,00;;
+FA-2026-031;Boulangerie Martin;05/01/2026;01/01/2026;100,00;;
+FA-2026-032;Boulangerie Martin;05/01/2026;04/02/2026;cent euros;;
+FA-2026-033;Boulangerie Martin;05/01/2026;04/02/2026;1.234;;
+FA-2026-034;Boulangerie Martin;05/01/2026;04/02/2026;100,00;150,00;
+FA-2026-035;Boulangerie Martin;05/01/2026;04/02/2026;-50,00;;
+;Boulangerie Martin;05/01/2026;04/02/2026;100,00;;
+FA-2026-037;;05/01/2026;04/02/2026;100,00;;
+FA-2026-038;Boulangerie Martin;05/01/2026;04/02/2026;100,00;;pas-un-email
+FA-2026-039;Boulangerie Martin;05/01/2026;04/02/2026;0,00;;
+FA-2026-040;Boulangerie Martin;05/01/2026;04/02/2026;10,999;;
+FA-2026-041;Garage Lefèvre;05/01/2026;04/02/2026;100,00;;

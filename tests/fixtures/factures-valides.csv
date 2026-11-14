@@ -1,0 +1,5 @@
+Numéro;Client;Date facture;Échéance;Montant TTC;Déjà payé;Email
+FA-2026-001;Boulangerie Martin;05/01/2026;04/02/2026;1 234,56;;compta@boulangerie-martin.test
+FA-2026-002;Boulangerie Martin;12/01/2026;11/02/2026;480,00;200,00;compta@boulangerie-martin.test
+FA-2026-003;Garage Lefèvre;20/01/2026;19/02/2026;12.500,00;12.500,00;
+FA-2026-004;"Durand, Petit & Associés";02/02/2026;04/03/2026;89,9;;contact@durand-petit.test

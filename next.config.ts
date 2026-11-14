@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
   experimental: {
     // Active forbidden() : une vraie réponse 403 quand la permission manque.
     authInterrupts: true,
+    // Un fichier CSV d'import (2 Mo au plus) transite par une action serveur.
+    serverActions: { bodySizeLimit: "3mb" },
   },
   turbopack: {
     rules: {

@@ -9,12 +9,15 @@ type NavItem = { label: string; path: string; permission: Permission };
 
 const NAV: readonly NavItem[] = [
   { label: "Tableau de bord", path: "", permission: "data.read" },
+  { label: "Factures", path: "/invoices", permission: "data.read" },
+  { label: "Clients", path: "/customers", permission: "data.read" },
+  { label: "Imports", path: "/imports", permission: "data.read" },
   { label: "Membres", path: "/settings/members", permission: "data.read" },
   { label: "Journal d'audit", path: "/settings/audit", permission: "audit.read" },
 ];
 
 // Affichés pour situer le produit, sans lien tant que la phase n'est pas livrée.
-const UPCOMING = ["Factures", "Clients", "Relances", "Boîte de réception IA", "Prévisions", "Rapports"];
+const UPCOMING = ["Relances", "Boîte de réception IA", "Prévisions", "Rapports"];
 
 /**
  * Coquille commune aux écrans d'une organisation. Les liens masqués ici ne
