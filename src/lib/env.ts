@@ -8,11 +8,20 @@ import { z } from "zod";
  * Ces trois valeurs sont publiques par nature (préfixe NEXT_PUBLIC_).
  * Aucun secret ne doit jamais porter ce préfixe.
  */
-const schema = z.object({
-  NEXT_PUBLIC_SUPABASE_URL: z.url(),
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: z.string().min(20),
-  NEXT_PUBLIC_SITE_URL: z.url().refine((url) => !url.endsWith("/"), "sans barre oblique finale"),
+/**
+ * Une valeur collée dans un écran de réglages arrive souvent avec un espace,
+ * un retour à la ligne ou une barre oblique en trop. On les retire au lieu de
+ * faire tomber toute l'application pour un caractère invisible.
+ */
+const text = z.string().transform((value) => value.trim());
+const baseUrl = text.transform((value) => value.replace(/\/+$/, "")).pipe(z.url());
+
+export const envSchema = z.object({
+  NEXT_PUBLIC_SUPABASE_URL: baseUrl,
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: text.pipe(z.string().min(20)),
+  NEXT_PUBLIC_SITE_URL: baseUrl,
 });
+const schema = envSchema;
 
 export type Env = z.infer<typeof schema>;
 
