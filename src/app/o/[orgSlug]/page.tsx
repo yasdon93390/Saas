@@ -18,14 +18,25 @@ export default async function DashboardPage({ params }: { params: Promise<{ orgS
         <CardBody className="py-10 text-center">
           <p className="font-medium text-ink">Votre espace est prêt.</p>
           <p className="mx-auto mt-2 max-w-md text-sm text-ink-soft">
-            Les factures, les relances et les indicateurs apparaîtront ici au fil des prochaines
-            étapes. Aucune relance ne peut être envoyée pour l&apos;instant.
+            Commencez par importer vos factures. Les indicateurs et les relances arriveront dans les
+            prochaines étapes. Aucune relance ne peut être envoyée pour l&apos;instant.
           </p>
-          {can(context.role, "members.manage") ? (
-            <Link href={`/o/${orgSlug}/settings/members`} className={`${buttonClass("primary")} mt-6`}>
-              Inviter un collègue
-            </Link>
-          ) : null}
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            {can(context.role, "data.write") ? (
+              <Link href={`/o/${orgSlug}/imports/new`} className={buttonClass("primary")}>
+                Importer des factures
+              </Link>
+            ) : (
+              <Link href={`/o/${orgSlug}/invoices`} className={buttonClass("primary")}>
+                Voir les factures
+              </Link>
+            )}
+            {can(context.role, "members.manage") ? (
+              <Link href={`/o/${orgSlug}/settings/members`} className={buttonClass("secondary")}>
+                Inviter un collègue
+              </Link>
+            ) : null}
+          </div>
         </CardBody>
       </Card>
     </div>

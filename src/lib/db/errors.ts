@@ -13,6 +13,9 @@ const KIND_BY_CODE: Record<string, ActionErrorKind> = {
   "22023": "invalid",
   "23514": "invalid",
   "22P02": "invalid",
+  "22007": "invalid",
+  "22008": "invalid",
+  "23503": "invalid",
 };
 
 const DEFAULT_MESSAGES: Record<ActionErrorKind, string> = {

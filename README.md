@@ -2,13 +2,14 @@
 
 SaaS B2B de suivi des factures impayées et de relance amiable assistée par IA.
 
-**État : phase 1 (fondations) terminée.** Comptes, organisations, invitations, rôles, isolation des
-données et journal d'audit. Aucune facture ni relance pour l'instant.
+**État : phases 1 et 2 terminées.** Comptes, organisations, rôles, isolation des données, journal
+d'audit, clients, factures, règlements et import CSV. Aucune relance ni IA pour l'instant.
 
 | Document | Contenu |
 |----------|---------|
 | [docs/00-cadrage-architecture.md](docs/00-cadrage-architecture.md) | Périmètre MVP, décisions, plan en 6 phases, architecture, risques |
 | [docs/01-phase-1-fondations.md](docs/01-phase-1-fondations.md) | Ce qui est livré, comment le lancer, ce qui est testé, ce qui reste |
+| [docs/02-phase-2-donnees-metier.md](docs/02-phase-2-donnees-metier.md) | Clients, factures, règlements, import CSV : règles garanties, format du fichier, limites |
 
 ## Démarrage rapide
 
@@ -42,4 +43,5 @@ ils sont visibles sur http://127.0.0.1:54324.
   Les tests échouent sinon.
 - Les utilisateurs n'écrivent jamais directement dans les tables : ils passent par des fonctions SQL
   qui vérifient les droits et écrivent l'audit dans la même transaction.
-- Les montants seront des entiers en centimes. Jamais de nombre à virgule flottante.
+- Les montants sont des entiers en centimes. Jamais de nombre à virgule flottante.
+- Le montant réglé et le statut d'une facture ne sont jamais saisis : la base les calcule.
